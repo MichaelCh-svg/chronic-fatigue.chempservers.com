@@ -40,10 +40,10 @@ export default {
   data() {
     return {
       title: '',
-      description: '',
       url: '',
       file: null,
       error: '',
+      description:'',
     }
   },
   methods: {

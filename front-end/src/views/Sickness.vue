@@ -5,7 +5,7 @@
 
       <img :src="userPhoto.path" />
       <div class="photoInfo">
-        <p class="photoTitle">{{userPhoto.title}}</p>
+        <h2 class="photoTitle">{{userPhoto.title}}</h2>
         <p class="photoTitle">{{userPhoto.description}}</p>
         <p class="photoName">{{userPhoto.user.username}}</p>
       </div>

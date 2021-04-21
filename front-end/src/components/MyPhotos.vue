@@ -28,12 +28,27 @@
       
       <div class ="sickness">
         
-        <input class="sickness_name" v-model="photos[0].title" :placeholder="photos[0].title">
+        
+        <div v-if='editing_title' class="description">
+          <input class="sickness_name" v-model="photos[0].title" :placeholder="photos[0].title">
+          <button class='edit-button' @click="editStory(photos[0])">Finish Edit</button>
+        </div>
+        <div v-else class="description">
+          <h1>{{photos[0].title}}</h1>
+          <button class='edit-button' @click="toggleEditTitle">Edit</button>
+        </div>
         <img :src="photos[0].path" />
-        <textarea v-model="photos[0].description" :placeholder="photos[0].description"></textarea>
+        <div v-if='editing_description' class="description">
+          <textarea v-model="photos[0].description"></textarea>
+          <button class='edit-button' @click="editStory(photos[0])">Finish Edit</button>
+        </div>
+        <div v-else class="description">
+          <p>{{photos[0].description}}</p>
+          <button class='edit-button' @click="toggleEditDescription">Edit</button>
+        </div>
         <div class="actions">
           <button @click="deleteStory(photos[0])">Delete</button>
-          <button @click="editStory(photos[0])">Edit</button>
+          
           <hr style = emphas>
           <br>
         </div>
@@ -71,11 +86,13 @@ export default {
   data() {
     return {
       show: false,
-      photos: [],
+      photos: [{description: ''}],
       error: '',
       text: '',
       symptoms: [],
       symptom: '',
+      editing_description: false,
+      editing_title: false,
     }
   },
   created() {
@@ -87,6 +104,12 @@ export default {
     },
   },
   methods: {
+    toggleEditDescription(){
+      this.editing_description = true;
+    },
+    toggleEditTitle(){
+      this.editing_title = true;
+    },
     async editStory(story) {
       try {
         await axios.put("/api/photos/" + story._id, {
@@ -94,6 +117,8 @@ export default {
           description: this.photos[0].description,
         });
         this.getSickness();
+        this.editing_description=false;
+        this.editing_title=false;
         return true;
       } catch (error) {
         console.log(error);
@@ -173,6 +198,38 @@ export default {
 img{
   max-width:500px;
   max-height:300px;
+}
+input, img, textarea, .sickness{
+  border-style:solid;
+}
+.sickness{
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  align-content:center;
+  justify-content:space-around;
+}
+.sickness_name{
+  width: 260px;
+  align-self:center;
+  margin:10px;
+}
+button{
+  height:30px;
+}
+.edit-button{
+  align-self:center;
+}
+.description{
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:row;
+  border-style:solid;
+  justify-content:space-around;
+}
+textarea{
+  margin:6px;
+  width:70%;
 }
 .menu {
   display: flex;
