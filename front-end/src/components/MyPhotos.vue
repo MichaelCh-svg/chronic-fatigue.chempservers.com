@@ -12,9 +12,10 @@
       </div>
       <div class="page_top">
       <br>
+          <h1 class="photoTitle">Chronic Fatigue</h1>
           <img src='./sleeping-cat.jpg'>
           <div class="photoInfo">
-            <p class="photoTitle">Chronic Fatigue</p>
+            
             <p class="photoTitle">All cats have chronic fatigue. This makes them nocturnal.</p>
             <p class="photoName">Jake Sandwich</p>
             <ul>
@@ -205,6 +206,8 @@ export default {
 img{
   max-width:500px;
   max-height:300px;
+  max-width:100%;
+  height:auto;
 }
 input, textarea{
   border-style:solid;
@@ -214,7 +217,7 @@ input, textarea{
   border-style:solid;
   border-width:6px;
   border-color:slategray;
-  height:50px;
+  height:fit-content;
   margin-bottom:10px;
 }
 .sickness, .story{
@@ -261,5 +264,12 @@ textarea{
   flex-wrap:wrap;
   flex-direction:row;
   margin-bottom:60px;
+}
+.story{
+  margin-top:30px;
+}
+.page_top{
+  border-style:solid;
+  align-self:center;
 }
 </style>
