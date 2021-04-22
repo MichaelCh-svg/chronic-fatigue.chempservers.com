@@ -3,7 +3,7 @@
   <div class="header" v-if="photos.length===0">
     <div class="menu">
       <p><a @click="toggleUpload"><i class="fas fa-image">Share your story.</i></a></p>
-      <button class='logout'>{{user.firstName}} {{user.lastName}} <a @click="logout">Logout</a></button>
+      <button class='logout' @click="logout">{{user.firstName}} {{user.lastName}}Logout</button>
       <uploader :show="show" @close="close" @uploadFinished="uploadFinished" />
     </div>
     <div class='story'>
@@ -29,7 +29,7 @@
   <div v-else>
     <div class="menu">
       <h2>Edit the {{photos[0].title}} story</h2>
-      <button class='logout'>{{user.firstName}} {{user.lastName}} <a @click="logout">Logout</a></button>
+       <button class='logout' @click="logout">{{user.firstName}} {{user.lastName}}Logout</button>
       <uploader :show="show" @close="close" @uploadFinished="uploadFinished" />
     </div>
       
