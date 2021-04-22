@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <header class ="header">
-      
-        <router-link to="/"><i class="fas fa-home"></i></router-link>
+        <div class="routes">
+          <router-link to="/">Collection</router-link>
+          <router-link to="/dashboard">User/Logout</router-link>
+        </div>
         <h1>Chronic Fatigue Diagnosis Successes</h1>
-        <router-link to="/dashboard"><i class="fas fa-user"></i></router-link>
+        
       
     </header>
     <router-view />
@@ -34,11 +36,21 @@ body {
 }
 
 .header{
-  height:60px;
-  margin:10px;
+  height:110px;
+  /* margin:10px; */
   display:flex;
-  justify-content:space-around;
-  align-items:center;
+  flex-wrap:wrap;
+  flex-direction:column;
+  background-color:teal;
+  padding:30px;
+  /* justify-content:space-around; */
+  /* align-items:center; */
+}
+.routes{
+  display:flex;
+  justify-content:space-between;
+  background-color:turquoise;
+  padding:10px;
 }
 
 #header {

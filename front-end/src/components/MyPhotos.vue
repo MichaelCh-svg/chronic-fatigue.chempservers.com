@@ -3,7 +3,7 @@
   <div class="header" v-if="photos.length===0">
     <div class="menu">
       <p><a @click="toggleUpload"><i class="fas fa-image">Share your story.</i></a></p>
-      <h2>{{user.firstName}} {{user.lastName}} <a @click="logout"><i class="fas fa-sign-out-alt"></i></a></h2>
+      <button class='logout'>{{user.firstName}} {{user.lastName}} <a @click="logout">Logout</a></button>
       <uploader :show="show" @close="close" @uploadFinished="uploadFinished" />
     </div>
     <div class='story'>
@@ -29,7 +29,7 @@
   <div v-else>
     <div class="menu">
       <h2>Edit the {{photos[0].title}} story</h2>
-      <h2>{{user.firstName}} {{user.lastName}} <a @click="logout"><i class="fas fa-sign-out-alt"></i></a></h2>
+      <button class='logout'>{{user.firstName}} {{user.lastName}} <a @click="logout">Logout</a></button>
       <uploader :show="show" @close="close" @uploadFinished="uploadFinished" />
     </div>
       
@@ -208,6 +208,14 @@ img{
 }
 input, textarea{
   border-style:solid;
+}
+.logout{
+  padding:6px;
+  border-style:solid;
+  border-width:6px;
+  border-color:slategray;
+  height:50px;
+  margin-bottom:10px;
 }
 .sickness, .story{
   display:flex;
