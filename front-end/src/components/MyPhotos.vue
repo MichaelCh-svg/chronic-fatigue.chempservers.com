@@ -6,18 +6,25 @@
       <h2>{{user.firstName}} {{user.lastName}} <a @click="logout"><i class="fas fa-sign-out-alt"></i></a></h2>
       <uploader :show="show" @close="close" @uploadFinished="uploadFinished" />
     </div>
-    <div>
-      <h1>Sample story</h1>
-    </div>
-    <div class="page_top">
-    <br>
-        <img src='./sleeping-cat.jpg'>
-        <div class="photoInfo">
-          <p class="photoTitle">Chronic Fatigue</p>
-          <p class="photoTitle">All cats have chronic fatigue. This makes them nocturnal.</p>
-          <p class="photoName">Jake Sandwich</p>
-        </div>
-    </div>
+    <div class='story'>
+      <div>
+        <h1>Sample story</h1>
+      </div>
+      <div class="page_top">
+      <br>
+          <img src='./sleeping-cat.jpg'>
+          <div class="photoInfo">
+            <p class="photoTitle">Chronic Fatigue</p>
+            <p class="photoTitle">All cats have chronic fatigue. This makes them nocturnal.</p>
+            <p class="photoName">Jake Sandwich</p>
+            <ul>
+              <li>Fatigue</li>
+              <li>stress</li>
+              <li>difficulty sleeping</li>
+            </ul>
+          </div>
+      </div>
+      </div>
   </div>
   <div v-else>
     <div class="menu">
@@ -199,10 +206,10 @@ img{
   max-width:500px;
   max-height:300px;
 }
-input, img, textarea, .sickness{
+input, textarea{
   border-style:solid;
 }
-.sickness{
+.sickness, .story{
   display:flex;
   flex-wrap:wrap;
   flex-direction:column;

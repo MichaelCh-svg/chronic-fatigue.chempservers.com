@@ -2,9 +2,9 @@
 <div>
   <section class="image-gallery">
     <router-link class="image" v-for="photo in photos" v-bind:key="photo._id" :to="'/photos/' + photo._id">
+      <h1 class="photoTitle">{{photo.title}}</h1>
       <img :src="photo.path" />
       <div class="photoInfo">
-        <p class="photoTitle">{{photo.title}}</p>
         <p class="photoName">{{photo.user.username}}</p>
       </div>
       <p class="photoDate">{{formatDate(photo.created)}}</p>

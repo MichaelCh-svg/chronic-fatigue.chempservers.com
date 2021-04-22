@@ -1,23 +1,23 @@
 <template>
 <div>
   <div class="page_top">
-  <br>
-
-      <img :src="userPhoto.path" />
-      <div class="photoInfo">
-        <h2 class="photoTitle">{{userPhoto.title}}</h2>
-        <p class="photoTitle">{{userPhoto.description}}</p>
-        <p class="photoName">{{userPhoto.user.username}}</p>
-      </div>
-      <p class="photoDate">{{formatDate(userPhoto.created)}}</p>
-      <h2>Symptoms</h2>
-      <ul>
-        <li v-for="symptom in symptoms" :key="symptom.id">
-          <label>
-            {{ symptom.text }}
-          </label>
-        </li>
-      </ul>
+    <h1 class="photoTitle">{{userPhoto.title}}</h1>
+    <br>
+    <img :src="userPhoto.path" />
+    <div class="photoInfo">
+      <p class="photoDescription">{{userPhoto.description}}</p>
+      <p class="photoName">--{{userPhoto.user.username}}</p>
+    </div>
+    <p class="photoDate">{{formatDate(userPhoto.created)}}</p>
+    <hr><br>
+    <h1>Symptoms</h1>
+    <ul>
+      <li v-for="symptom in symptoms" :key="symptom.id">
+        <label>
+          {{ symptom.text }}
+        </label>
+      </li>
+    </ul>
   </div>
   <div v-if='user' class = 'commentForm'>
     <h2>Enter a comment</h2>
@@ -31,10 +31,10 @@
     <h3>Comments</h3>
     <ul>
       <li v-for="comment in comments" :key="comment._id">
-          <p>{{comment.description}}</p>
-          <p><i>-- {{comment.user.username}}</i></p>
-          <p class="photoDate">{{formatDate(comment.created)}}</p>
-          <button v-if='user && user._id===comment.user._id' class="delete" @click="deleteComment(comment)"> delete</button>   
+        <p>{{comment.description}}</p>
+        <p><i>-- {{comment.user.username}}</i></p>
+        <p class="photoDate">{{formatDate(comment.created)}}</p>
+        <button v-if='user && user._id===comment.user._id' class="delete" @click="deleteComment(comment)"> delete</button>   
       </li>
     </ul>
     </div>
@@ -155,10 +155,18 @@ export default {
 </script>
 
 <style scoped>
-.page_top{
-  background-color:sienna;
+.photoDescription{
+  border-width:8px;
+  border-color: maroon;
+  border-style:solid;
   padding:10px;
-  padding-top:130px;
+  margin-left: 20px;
+  margin-right:20px;
+}
+.page_top{
+  background-color:lavender;
+  padding:10px;
+  padding-top:30px;
 }
 .commentForm{
 margin-bottom: 10px;
@@ -168,21 +176,20 @@ img{
   max-width:90%;
   max-height: 500px;
 }
-ol{
-  /* background-color:lightsteelblue; */
-  padding:5px;
-  padding-left:13px;
+ul{
+  margin-left:30px;
   border-style:solid;
-}
-ol li{
-  padding:6px;
-  padding-left:12px;
+  background-color:maroon;
+  padding-bottom:20px;
 }
 li{
   /* background-color:lightseagreen; */
+  background-color:mediumaquamarine;
   margin-top:25px;
+  padding:10px;
   border-style:solid;
   padding-bottom: 10px;
+  width: 500px;
 }
 hr{
   background-color:black;
